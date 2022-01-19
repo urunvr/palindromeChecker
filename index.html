@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+</head>
+
+<body>
+    <div style="width:100%; text-align:center;">
+        <div style="margin:auto">
+            <h1>PALINDROME CHECKER</h1>
+            <input id="input" type="text" placeholder="Plese enter yoru text">
+            <button id="checkBtn" type="button">Check</button>
+            <p id="answer"></p>
+        </div>
+    </div>
+
+
+    <script>
+        window.onload = (event) => {
+            const button = document.getElementById('checkBtn');
+            const answer = document.getElementById('answer');
+            const input = document.getElementById('input');
+            function palindrome(str) {
+                let strArr = "";
+                let secondStr = "";
+                for (let i = 0; i < str.length; i++) {
+                    if (/[a-zA-Z0-9]/.test(str[i])) {
+                        strArr += str[i]
+                    }
+                }
+                strArr = strArr.toLowerCase();
+                for (let j = strArr.length - 1; j >= 0; j--) {
+                    secondStr += strArr[j];
+                }
+
+                if (strArr === secondStr) {
+                    return true
+                } else {
+                    return false;
+                }
+            }
+
+            button.addEventListener('click', () =>{
+                let inputVal = input.value;
+                let conc =  palindrome(inputVal);
+                if(conc){
+                    answer.innerText = `${inputVal} is a PALINDMORE STRING`
+                }else{
+                    answer.innerText = `${inputVal} is not a PALINDMORE STRING `
+                }
+            })
+
+           
+        };
+    </script>
+</body>
+
+</html>
